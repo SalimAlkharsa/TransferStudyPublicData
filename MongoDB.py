@@ -15,5 +15,5 @@ def upload_data_to_db(file, BASE):
   df.to_json('yourjson.json')                               # saving to json file
   jdf = open('yourjson.json').read()                        # loading the json file 
   data = json.loads(jdf)
-  db.BASE.insert_many(data)
+  db[BASE].insert_many(data)
   pass
