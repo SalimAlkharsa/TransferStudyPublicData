@@ -7,15 +7,11 @@ def test_func():
   print("Test successful!")
   pass
 
-def upload_data_to_db(file, BASE):
+def upload_data_to_db(df, collection):
   password = input("Enter the db pw: ")
   client = pymongo.MongoClient("mongodb+srv://TransferDatabase:"+password+"@cluster0.pncv8.mongodb.net/test?retryWrites=true&w=majority")
   db = client.test
-  df = pd.read_csv(file+'.csv',encoding = 'ISO-8859-1')   # loading csv file
-  df.to_json('yourjson.json')                               # saving to json file
-  jdf = open('yourjson.json').read()                        # loading the json file 
-  data = json.loads(jdf)
-  db[BASE].insert_many(data)
+  db[collection].insert_many(df.to_dict('records'))
   pass
 
 def read_db_to_df(BASE, query ={}):
