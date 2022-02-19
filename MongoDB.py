@@ -14,10 +14,10 @@ def upload_data_to_db(df, collection):
   db[collection].insert_many(df.to_dict('records'))
   pass
 
-def read_db_to_df(BASE, query ={}):
+def read_db_to_df(collection, query ={}):
   password = input("Enter the db pw: ")
   client = pymongo.MongoClient("mongodb+srv://TransferDatabase:"+password+"@cluster0.pncv8.mongodb.net/test?retryWrites=true&w=majority")
   db = client.test
-  cursor = db['Numeric'].find({})
+  cursor = db[collection].find({})
   df =  pd.DataFrame(cursor)
   return df
