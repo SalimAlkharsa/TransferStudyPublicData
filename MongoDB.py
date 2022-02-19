@@ -18,6 +18,6 @@ def read_db_to_df(BASE, query ={}):
   password = input("Enter the db pw: ")
   client = pymongo.MongoClient("mongodb+srv://TransferDatabase:"+password+"@cluster0.pncv8.mongodb.net/test?retryWrites=true&w=majority")
   db = client.test
-  cursor = db[BASE].find(query)
-  df =  pd.DataFrame(list(cursor))
+  cursor = db['Numeric'].find({})
+  df =  pd.DataFrame(cursor)
   return df
