@@ -2,6 +2,11 @@ import json
 import pymongo
 import pandas as pd
 
+def test_func():
+  #Just a test func to see if colab clone worked
+  print("Test successful!")
+  pass
+
 def upload_data_to_db(file, BASE):
   password = input("Enter the db pw: ")
   client = pymongo.MongoClient("mongodb+srv://TransferDatabase:"+password+"@cluster0.pncv8.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
